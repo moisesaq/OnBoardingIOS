@@ -46,19 +46,43 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let button = UIButton(type: .system)
         button.setTitle("Skip", for: .normal)
         button.setTitleColor(yellowColor, for: .normal)
+        button.addTarget(self, action: #selector(skip), for: .touchUpInside)
         return button
     }()
+    
+    func skip(){
+        pageControl.currentPage = pages.count - 1
+        nextPage()
+    }
     
     //WAY 2 CREATE BUTTON
-    var nextButton: UIButton = {
-        return ViewController.self.generateButton(title: "Next")
+    lazy var nextButton: UIButton = {
+        return self.generateButton(title: "Next", action: #selector(nextPage))
     }()
     
-    static func generateButton(title: String) -> UIButton{
+    func generateButton(title: String, action: Selector) -> UIButton{
         let button = UIButton(type: .system)
         button.setTitle(title, for: .normal)
-        button.setTitleColor(yellowColor, for: .normal)
+        button.setTitleColor(ViewController.self.yellowColor, for: .normal)
+        button.addTarget(self, action: action, for: .touchUpInside)
         return button
+    }
+    
+    func nextPage(){
+        if pageControl.currentPage == pages.count{
+            return
+        }
+        
+        if pageControl.currentPage == pages.count - 1{
+            moveControlConstraintsOffScreen()
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations:{
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
+        
+        let indexPath = IndexPath(item: pageControl.currentPage + 1, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        pageControl.currentPage += 1
     }
     
     var pageControlAnchor: NSLayoutConstraint?
@@ -123,9 +147,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         pageControl.currentPage = pageNumber
         
         if pageNumber == pages.count {
-            pageControlAnchor?.constant = 40
-            skipButtonAnchor?.constant = -40
-            nextButtonAnchor?.constant = -40
+            moveControlConstraintsOffScreen()
         }else{
             pageControlAnchor?.constant = 0
             skipButtonAnchor?.constant = 16
@@ -135,6 +157,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations:{
             self.view.layoutIfNeeded()
         }, completion: nil)
+    }
+    
+    fileprivate func moveControlConstraintsOffScreen(){
+        pageControlAnchor?.constant = 40
+        skipButtonAnchor?.constant = -40
+        nextButtonAnchor?.constant = -40
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
