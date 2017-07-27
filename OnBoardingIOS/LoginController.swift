@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class LoginController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     static let yellowColor: UIColor = UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1)
     
@@ -63,7 +63,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func generateButton(title: String, action: Selector) -> UIButton{
         let button = UIButton(type: .system)
         button.setTitle(title, for: .normal)
-        button.setTitleColor(ViewController.self.yellowColor, for: .normal)
+        button.setTitleColor(LoginController.self.yellowColor, for: .normal)
         button.addTarget(self, action: action, for: .touchUpInside)
         return button
     }
@@ -126,8 +126,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func keyboardShow(){
+        let y: CGFloat = UIDevice.current.orientation.isLandscape ? -100 : -50
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            self.view.frame = CGRect(x: 0, y: -50, width: self.view.frame.width, height: self.view.frame.height)
+            self.view.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: nil)
     }
     
@@ -190,6 +191,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
+    }
+    
+    //DETECT SCREEN ROTATION
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView.collectionViewLayout.invalidateLayout()
+        let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
+        DispatchQueue.main.async {
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            self.collectionView.reloadData()
+        }
     }
 }
 

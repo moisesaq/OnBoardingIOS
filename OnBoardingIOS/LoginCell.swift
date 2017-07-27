@@ -65,15 +65,22 @@ class LoginCell: UICollectionViewCell{
         addSubview(loginButton)
     }
     
-    fileprivate func alignViews(){
+    func alignViews(){
         _ = logoImageView.anchor(centerYAnchor, left: nil, bottom: nil, right: nil, topConstant: -200, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 160, heightConstant: 160)
         
         logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
-        _ = emailTextField.anchor(logoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 8, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
-        
-        _ = passwordTextField.anchor(emailTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
-        
+        print(" Land scape login cell \(UIDevice.current.orientation.isLandscape)")
+        if UIDevice.current.orientation.isLandscape {
+            _ = emailTextField.anchor(logoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: centerXAnchor, topConstant: 8, leftConstant: 32, bottomConstant: 0, rightConstant: 5, widthConstant: 0, heightConstant: 50)
+            
+            _ = passwordTextField.anchor(logoImageView.bottomAnchor, left: centerXAnchor, bottom: nil, right: rightAnchor, topConstant: 8, leftConstant: 5, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
+        }else{
+            _ = emailTextField.anchor(logoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 8, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
+            
+            _ = passwordTextField.anchor(emailTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
+            
+        }
         _ = loginButton.anchor(passwordTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 16, leftConstant: 32, bottomConstant: 0, rightConstant: 32, widthConstant: 0, heightConstant: 50)
     }
 }
