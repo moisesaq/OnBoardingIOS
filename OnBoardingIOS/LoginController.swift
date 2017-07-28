@@ -8,7 +8,11 @@
 
 import UIKit
 
-class LoginController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+protocol LoginControllerDelegate: class {
+    func finishedLoggingIn()
+}
+
+class LoginController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, LoginControllerDelegate {
 
     static let yellowColor: UIColor = UIColor(red: 247/255, green: 154/255, blue: 27/255, alpha: 1)
     
@@ -125,6 +129,7 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardhide), name: .UIKeyboardWillHide, object: nil)
     }
     
+    //SHOW KEYBOARD
     func keyboardShow(){
         let y: CGFloat = UIDevice.current.orientation.isLandscape ? -100 : -50
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -132,6 +137,7 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
         }, completion: nil)
     }
     
+    //HIDE KEYBOARD
     func keyboardhide(){
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -180,6 +186,7 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == pages.count {
             let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as! LoginCell
+            loginCell.delegate = self
             return loginCell
         }
         
@@ -202,6 +209,14 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
             self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             self.collectionView.reloadData()
         }
+    }
+    
+    func finishedLoggingIn(){
+        let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+        guard let mainNavigationController = rootViewController as? MainNavigationController else { return }
+        
+        mainNavigationController.viewControllers = [HomeController()]
+        dismiss(animated: true, completion: nil)
     }
 }
 

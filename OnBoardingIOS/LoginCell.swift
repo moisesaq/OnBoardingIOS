@@ -37,13 +37,21 @@ class LoginCell: UICollectionViewCell{
         return textField
     }()
     
-    let loginButton: UIButton = {
+    lazy var loginButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .orange
         button.setTitle("Log In", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(handlerLogin), for: .touchUpInside)
         return button
     }()
+    
+    //Weak breaks the retain cycle
+    weak var delegate: LoginControllerDelegate?
+    
+    func handlerLogin(){
+        delegate?.finishedLoggingIn()
+    }
     
     func generateTextFieldBase(placeholder: String) -> LeftPaddedTextField {
         let textField = LeftPaddedTextField()
