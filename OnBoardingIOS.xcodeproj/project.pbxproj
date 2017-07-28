@@ -14,6 +14,7 @@
 		80F10CDC1F28623000A11EBF /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F10CDB1F28623000A11EBF /* LeftPaddedTextField.swift */; };
 		80F10CDE1F29B09900A11EBF /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F10CDD1F29B09900A11EBF /* MainNavigationController.swift */; };
 		80F10CE01F29B1BA00A11EBF /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F10CDF1F29B1BA00A11EBF /* HomeController.swift */; };
+		80F10CE21F2ADE7600A11EBF /* UserDefaults-helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F10CE11F2ADE7600A11EBF /* UserDefaults-helper.swift */; };
 		80FA12C21F21B40200800271 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA12C11F21B40200800271 /* AppDelegate.swift */; };
 		80FA12C41F21B40200800271 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FA12C31F21B40200800271 /* LoginController.swift */; };
 		80FA12C71F21B40200800271 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80FA12C51F21B40200800271 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		80F10CDB1F28623000A11EBF /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
 		80F10CDD1F29B09900A11EBF /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		80F10CDF1F29B1BA00A11EBF /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		80F10CE11F2ADE7600A11EBF /* UserDefaults-helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults-helper.swift"; sourceTree = "<group>"; };
 		80FA12BE1F21B40100800271 /* OnBoardingIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnBoardingIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80FA12C11F21B40200800271 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80FA12C31F21B40200800271 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				80F10CDB1F28623000A11EBF /* LeftPaddedTextField.swift */,
 				80F10CDD1F29B09900A11EBF /* MainNavigationController.swift */,
 				80F10CDF1F29B1BA00A11EBF /* HomeController.swift */,
+				80F10CE11F2ADE7600A11EBF /* UserDefaults-helper.swift */,
 			);
 			path = OnBoardingIOS;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				80F10CD81F26FF7600A11EBF /* Page.swift in Sources */,
 				80FA12C41F21B40200800271 /* LoginController.swift in Sources */,
 				80FA12C21F21B40200800271 /* AppDelegate.swift in Sources */,
+				80F10CE21F2ADE7600A11EBF /* UserDefaults-helper.swift in Sources */,
 				80F10CD41F26EBB900A11EBF /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,7 +22,7 @@ class MainNavigationController: UINavigationController{
     }
     
     fileprivate func isLoggedIn() -> Bool{
-        return false
+        return UserDefaults.standard.isLoggedIn()
     }
     
     func showLoginController(){
