@@ -172,17 +172,18 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
         nextButtonAnchor?.constant = -40
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pages.count + 1
-    }
-    
     fileprivate func registerCells(){
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(LoginCell.self, forCellWithReuseIdentifier: loginCellId)
     }
-    
-    
+}
+
+extension LoginController {
     //IMPLEMENTATION FUNCTIONS OF COLLECTION VIEW
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pages.count + 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == pages.count {
             let loginCell = collectionView.dequeueReusableCell(withReuseIdentifier: loginCellId, for: indexPath) as! LoginCell
@@ -199,9 +200,10 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width, height: view.frame.height)
     }
-    
+}
+
+extension LoginController {
     //DETECT SCREEN ROTATION
-    
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         collectionView.collectionViewLayout.invalidateLayout()
         let indexPath = IndexPath(item: pageControl.currentPage, section: 0)
