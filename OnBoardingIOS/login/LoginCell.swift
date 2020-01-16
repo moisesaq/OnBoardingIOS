@@ -49,7 +49,7 @@ class LoginCell: UICollectionViewCell{
     //Weak breaks the retain cycle
     weak var delegate: LoginControllerDelegate?
     
-    func handlerLogin(){
+    @objc func handlerLogin(){
         delegate?.finishedLoggingIn()
     }
     

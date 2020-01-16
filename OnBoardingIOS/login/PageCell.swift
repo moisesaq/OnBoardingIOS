@@ -22,17 +22,17 @@ class PageCell: UICollectionViewCell{
             
             let color = UIColor(white: 0.2, alpha: 1)
             let attributeText = NSMutableAttributedString(string: page.title,
-                                                          attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium), NSForegroundColorAttributeName: color])
+                                                          attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium), NSAttributedString.Key.foregroundColor: color])
             
             let subtitle = UIDevice.current.orientation.isLandscape ? " - \(page.message)" : "\n\n\(page.message)"
             attributeText.append(NSAttributedString(string: subtitle,
-                attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: color]))
+                                                    attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: color]))
             
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             
-            let lenght = attributeText.string.characters.count
-            attributeText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: lenght))
+            let lenght = attributeText.string.count
+            attributeText.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: lenght))
             
             textView.attributedText = attributeText
         }

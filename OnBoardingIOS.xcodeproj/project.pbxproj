@@ -92,6 +92,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80D0866823CED12100CC7927 /* customviews */ = {
+			isa = PBXGroup;
+			children = (
+				80F10CDB1F28623000A11EBF /* LeftPaddedTextField.swift */,
+			);
+			path = customviews;
+			sourceTree = "<group>";
+		};
+		80D0866923CED1BB00CC7927 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				80F10CD71F26FF7600A11EBF /* Page.swift */,
+				80F10CD51F26F67B00A11EBF /* PageCell.swift */,
+				80F10CD91F28573E00A11EBF /* LoginCell.swift */,
+				80FA12C31F21B40200800271 /* LoginController.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
 		80FA12B51F21B40100800271 = {
 			isa = PBXGroup;
 			children = (
@@ -115,18 +134,15 @@
 		80FA12C01F21B40100800271 /* OnBoardingIOS */ = {
 			isa = PBXGroup;
 			children = (
+				80D0866923CED1BB00CC7927 /* login */,
+				80D0866823CED12100CC7927 /* customviews */,
 				80FA12C11F21B40200800271 /* AppDelegate.swift */,
-				80FA12C31F21B40200800271 /* LoginController.swift */,
 				80FA12C51F21B40200800271 /* Main.storyboard */,
 				80FA12CB1F21B40200800271 /* Assets.xcassets */,
 				80FA12CD1F21B40200800271 /* LaunchScreen.storyboard */,
 				80FA12D01F21B40200800271 /* Info.plist */,
 				80FA12C81F21B40200800271 /* OnBoardingIOS.xcdatamodeld */,
 				80F10CD31F26EBB900A11EBF /* Extensions.swift */,
-				80F10CD51F26F67B00A11EBF /* PageCell.swift */,
-				80F10CD71F26FF7600A11EBF /* Page.swift */,
-				80F10CD91F28573E00A11EBF /* LoginCell.swift */,
-				80F10CDB1F28623000A11EBF /* LeftPaddedTextField.swift */,
 				80F10CDD1F29B09900A11EBF /* MainNavigationController.swift */,
 				80F10CDF1F29B1BA00A11EBF /* HomeController.swift */,
 				80F10CE11F2ADE7600A11EBF /* UserDefaults-helper.swift */,
@@ -239,6 +255,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -398,6 +415,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -440,6 +458,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -452,7 +471,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = moisesaq.OnBoardingIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -464,7 +483,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = moisesaq.OnBoardingIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

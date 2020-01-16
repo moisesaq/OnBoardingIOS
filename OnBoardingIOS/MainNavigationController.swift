@@ -25,7 +25,7 @@ class MainNavigationController: UINavigationController{
         return UserDefaults.standard.isLoggedIn()
     }
     
-    func showLoginController(){
+    @objc func showLoginController(){
         let loginController = LoginController()
         present(loginController, animated: true, completion: {
             //Perhaps we'll do something here later

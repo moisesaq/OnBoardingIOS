@@ -40,7 +40,7 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
     lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.pageIndicatorTintColor = .lightGray
-        pc.currentPageIndicatorTintColor = yellowColor
+        pc.currentPageIndicatorTintColor = .yellow
         pc.numberOfPages = self.pages.count + 1
         return pc
     }()
@@ -54,7 +54,7 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
         return button
     }()
     
-    func skip(){
+    @objc func skip(){
         pageControl.currentPage = pages.count - 1
         nextPage()
     }
@@ -72,7 +72,7 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
         return button
     }
     
-    func nextPage(){
+    @objc func nextPage(){
         if pageControl.currentPage == pages.count{
             return
         }
@@ -125,12 +125,14 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
     }
     
     fileprivate func observeKeyboardNotifications(){
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardhide), name: .UIKeyboardWillHide, object: nil)
+        /*NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow),
+                                               name: .UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardhide),
+                                               name: .UIResponder.keyboardWillHideNotification, object: nil)*/
     }
     
     //SHOW KEYBOARD
-    func keyboardShow(){
+    @objc func keyboardShow(){
         let y: CGFloat = UIDevice.current.orientation.isLandscape ? -100 : -50
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: self.view.frame.height)
@@ -138,7 +140,7 @@ class LoginController: UIViewController, UICollectionViewDataSource, UICollectio
     }
     
     //HIDE KEYBOARD
-    func keyboardhide(){
+    @objc func keyboardhide(){
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: nil)
